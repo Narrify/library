@@ -2,21 +2,16 @@ from setuptools import setup, find_packages
 
 setup(
     name="story_dialogue_generator",
-    version="0.1.0",
-    description="A library for generating stories and dialogues",
-    long_description=open("README.md").read(),
-    long_description_content_type="text/markdown",
-    author="Jefferson Kevin", # xd
-    author_email="yofer.corne@utec.edu.pe",
-    url="https://github.com/Narrify/library",
-    packages=find_packages(),  # Automatically finds the package folder
+    version="1.0.0",
+    description="Librería para generar diálogos e historias",
+    packages=find_packages(),
     install_requires=[
-        "requests"  # Add any other dependencies here
+        "requests",
+        "python-dotenv"
     ],
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-    ],
-    python_requires=">=3.6",
+    entry_points={
+        "console_scripts": [
+            "story_dialogue_generator=story_dialogue_generator.main:main",
+        ]
+    },
 )
