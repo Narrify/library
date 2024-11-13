@@ -1,46 +1,67 @@
 from story_dialogue_generator import UserSession, DialogueService, StoryService
 
-# Autenticación del usuario
-try:
-    user_session = UserSession("nuevo_usuario", "nueva_contraseña")
-    print("Autenticación exitosa, token obtenido:", user_session.get_token())
-except Exception as e:
-    print("Error en la autenticación:", e)
-    exit()
+# Configuración de autenticación de usuario
+user_session = UserSession()
 
-# Configuración para generar un diálogo
-story = "Esta es una historia de prueba para generar un diálogo."
-dialogue_settings = {"number_of_scenes": 3, "number_of_characters": 2}
-dialogue_characters = [
-    {"name": "Alice", "attributes": [{"name": "age", "value": "30"}, {"name": "skill", "value": "negotiation"}]},
-    {"name": "Bob", "attributes": [{"name": "age", "value": "35"}, {"name": "skill", "value": "combat"}]}
+# Datos de prueba para generar diálogo
+story_data = "A hero embarks on a journey to save the kingdom."
+dialogue_context = "The hero meets the villain for the first time in an epic showdown."
+settings_dialogue = {
+    "location": "castle",
+    "time_of_day": "night",
+    "number_of_scenes": 3,
+    "number_of_characters": 2
+}
+characters_dialogue = [
+    {
+        "name": "Hero",
+        "role": "protagonist",
+        "mood": "determined",
+        "attributes": [
+            {"key": "courage", "name": "courage", "value": "high"}
+        ]
+    },
+    {
+        "name": "Villain",
+        "role": "antagonist",
+        "mood": "menacing",
+        "attributes": [
+            {"key": "intelligence", "name": "intelligence", "value": "high"}
+        ]
+    }
 ]
 
 # Generación de diálogo
-try:
-    dialogue_service = DialogueService(user_session, story, dialogue_settings, dialogue_characters)
-    dialogue_response = dialogue_service.generate_dialogue()
-    print("Respuesta del diálogo:", dialogue_response)
-except Exception as e:
-    print("Error en la generación de diálogo:", e)
+dialogue_service = DialogueService(
+    user_session, story_data, dialogue_context, settings_dialogue, characters_dialogue, dialogue_style="dramatic"
+)
+dialogue_response = dialogue_service.generate_dialogue()
+print("Respuesta del diálogo:", dialogue_response)
 
-# Configuración para generar una historia
-title = "La Aventura Inesperada"
-story_settings = {
-    "size": "medium",
-    "attributes": [{"name": "theme", "value": "courage"}, {"name": "setting", "value": "medieval"}]
+# Datos de prueba para generar historia
+title = "The Great Adventure"
+settings_story = {
+    "size": "large",
+    "attributes": [
+        {"key": "theme", "value": "courage"}
+    ]
 }
-story_characters = [
-    {"name": "Arthur", "attributes": [{"name": "role", "value": "knight"}, {"name": "skill", "value": "swordsmanship"}]},
-    {"name": "Merlin", "attributes": [{"name": "role", "value": "wizard"}, {"name": "skill", "value": "magic"}]}
+characters_story = [
+    {
+        "name": "Knight",
+        "attributes": [
+            {"key": "role", "value": "protector"}
+        ]
+    },
+    {
+        "name": "Wizard",
+        "attributes": [
+            {"key": "skill", "value": "magic"}
+        ]
+    }
 ]
-plots = 1
-endings = 1
 
 # Generación de historia
-try:
-    story_service = StoryService(user_session, title, story_settings, story_characters, plots, endings)
-    story_response = story_service.generate_story()
-    print("Respuesta de la historia:", story_response)
-except Exception as e:
-    print("Error en la generación de historia:", e)
+story_service = StoryService(user_session, title, settings_story, characters_story)
+story_response = story_service.generate_story()
+print("Respuesta de la historia:", story_response)
