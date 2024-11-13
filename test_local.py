@@ -1,9 +1,7 @@
 from story_dialogue_generator import UserSession, DialogueService, StoryService
 
-# Configuración de autenticación de usuario
 user_session = UserSession()
 
-# Datos de prueba para generar diálogo
 story_data = "A hero embarks on a journey to save the kingdom."
 dialogue_context = "The hero meets the villain for the first time in an epic showdown."
 settings_dialogue = {
@@ -31,12 +29,12 @@ characters_dialogue = [
     }
 ]
 
-# Generación de diálogo
 dialogue_service = DialogueService(
     user_session, story_data, dialogue_context, settings_dialogue, characters_dialogue, dialogue_style="dramatic"
 )
 dialogue_response = dialogue_service.generate_dialogue()
 print("Respuesta del diálogo:", dialogue_response)
+
 
 # Datos de prueba para generar historia
 title = "The Great Adventure"
@@ -61,7 +59,18 @@ characters_story = [
     }
 ]
 
-# Generación de historia
 story_service = StoryService(user_session, title, settings_story, characters_story)
 story_response = story_service.generate_story()
 print("Respuesta de la historia:", story_response)
+
+
+
+""" 
+from story_dialogue_generator import DialogueService, StoryService
+
+# Generación de diálogo desde un archivo JSON
+dialogue_service = DialogueService(json_path="./dialogue.json")
+dialogue_response = dialogue_service.generate_dialogue()
+print("Respuesta del diálogo:", dialogue_response)
+
+"""
