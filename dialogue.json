@@ -1,0 +1,47 @@
+{
+    "story": "The protagonist reconnects with an old friend in a casual setting.",
+    "dialogue_context": "The protagonist meets an old friend after years.",
+    "characters": [
+        {
+            "name": "John",
+            "role": "protagonist",
+            "mood": "curious",
+            "attributes": [
+                {
+                    "key": "age",
+                    "name": "age",
+                    "value": "30"
+                },
+                {
+                    "key": "occupation",
+                    "name": "occupation",
+                    "value": "writer"
+                }
+            ]
+        },
+        {
+            "name": "Sarah",
+            "role": "friend",
+            "mood": "happy",
+            "attributes": [
+                {
+                    "key": "age",
+                    "name": "age",
+                    "value": "28"
+                },
+                {
+                    "key": "occupation",
+                    "name": "occupation",
+                    "value": "artist"
+                }
+            ]
+        }
+    ],
+    "settings": {
+        "location": "coffee shop",
+        "time_of_day": "afternoon",
+        "number_of_scenes": 1,
+        "number_of_characters": 2
+    },
+    "dialogue_style": "casual"
+}
