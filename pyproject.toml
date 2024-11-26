@@ -1,3 +1,19 @@
 [build-system]
 requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["story_dialogue_generator"] 
+include_package_data = true 
+    
+[tool.setuptools.package-data]
+story_dialogue_generator = ["*.json", "*.yaml"] 
+
+[tool.setuptools.dynamic]
+version = {file = "story_dialogue_generator/version.txt"}
+description = {file = "README.md"}
+long_description = {file = "README.md"}
+long_description_content_type = "text/markdown"
+license_files = ["LICENSE"] 
+[tool.check-manifest]
+ignore = ["*.env"]
